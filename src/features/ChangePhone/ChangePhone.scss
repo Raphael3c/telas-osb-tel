@@ -1,0 +1,37 @@
+.minHeight{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover{
+  width: 100%;
+}
+
+main{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-bottom: 200px;
+
+  .LabelInputContainer{
+    width: 93.5%;
+    margin-top: 53px;
+  }
+
+  .marginLeft{
+    margin-left: 4px;
+  }
+}
+
+footer{
+  margin: 0 8px 24px 8px;
+}
+
+input::placeholder {
+  text-align: center;
+  font-size: 18px;
+  line-height: 23.4px;
+}
