@@ -7,6 +7,7 @@ import { alpha, styled } from '@material-ui/core/styles';
 import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
 import { Button } from 'components/Button'
 import { Close } from "@material-ui/icons";
+import {ConfirmPopUp} from 'components/ConfirmPopUp'
 
 import InputLabel from '@material-ui/core/InputLabel'
 import React from 'react'
@@ -59,6 +60,12 @@ export const ChangePhone: React.FC = () => {
     history.replace("/");
   };
 
+  const onNextButtonClick = () => {
+    const containerPopUp = document.getElementById("displayConfirmPopUp")
+
+    if (containerPopUp) containerPopUp.style.display = 'block'
+  }
+
   const subtitle = 'Seu telefone atual é'
   const description = '(85) 00000.00000'
 
@@ -94,13 +101,18 @@ export const ChangePhone: React.FC = () => {
                 <InputLabel shrink htmlFor="bootstrap-input" className="marginLeft" >
                   Número de telefone
                 </InputLabel>
-                <CelphoneInput placeholder="Digite apenas números" id="bootstrap-input" className="cover"/>
+                <CelphoneInput 
+                  placeholder="Digite apenas números" 
+                  id="bootstrap-input"
+                  className="cover"/>
               </div>
             </main>
 
             <footer>        
-                <ProcessPageFooter />
+                <ProcessPageFooter nextButtonOnClick={onNextButtonClick}/>
             </footer>
+
+              <ConfirmPopUp />
           </div>
         </PageContainer>     
     </div>

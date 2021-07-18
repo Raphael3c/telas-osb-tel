@@ -6,18 +6,17 @@ import { Button } from "components/Button";
 import { useStyles } from "./ProcessPageFooter.style";
 
 interface ProcessPageFooterProps {
-  primaryButton?: React.ReactNode;
+  nextButtonOnClick: any
 }
 
+
 export const ProcessPageFooter: React.FC<ProcessPageFooterProps> = ({
-  primaryButton,
+  nextButtonOnClick
 }) => {
   const styles = useStyles();
   const history = useHistory();
 
   const onPreviousButtonClick = () => history.goBack();
-
-  const onNextButtonClick = () => history.goBack();
 
   return (
     <Box className={styles.buttonsWrapper}>
@@ -31,7 +30,7 @@ export const ProcessPageFooter: React.FC<ProcessPageFooterProps> = ({
       <Button
         palette="primary"
         endIcon={<KeyboardArrowRight color="secondary" />}
-        onClick={onNextButtonClick}
+        onClick={nextButtonOnClick}
       >
         Próximo
       </Button>
