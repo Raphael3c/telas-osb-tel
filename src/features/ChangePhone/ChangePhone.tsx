@@ -1,54 +1,24 @@
-import { AppBar } from 'components/AppBar'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { useHistory } from 'react-router-dom'
-import { PageContainer } from 'components/PageContainer'
-import InputBase from '@material-ui/core/InputBase';
-import { alpha, styled } from '@material-ui/core/styles';
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Button } from 'components/Button'
-import { Close } from "@material-ui/icons";
-import {ConfirmPopUp} from 'components/ConfirmPopUp'
-
-import InputLabel from '@material-ui/core/InputLabel'
 import React from 'react'
 
+import { AppBar } from 'components/AppBar'
+import { ProcessPageFooter } from 'components/ProcessPageFooter'
+import { PageContainer } from 'components/PageContainer'
+import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
+import {ConfirmPopUp} from 'components/ConfirmPopUp'
+import { CelphoneInput } from 'components/CelphoneInput'
+
+import {maskPhone} from '_utils/mask/maskPhone'
+
+import {useMask} from 'hooks/useMask'
+
+import { useHistory } from 'react-router-dom'
+import { Button } from 'components/Button'
+import { Close } from "@material-ui/icons";
+import InputLabel from '@material-ui/core/InputLabel'
+
+import {useSelector, useDispatch} from 'react-redux'
+
 import './ChangePhone.scss'
-
-//Componentizar isso
-const CelphoneInput = styled(InputBase)(({ theme }) => ({
-  '& .MuiInputBase-input': {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: '#ffff',
-    border: '1px solid #C4C4C4',
-    fontSize: 16,
-    width: '100%',
-    padding: '10px 12px',
-    transition: theme.transitions.create([
-      'border-color',
-      'background-color',
-      'box-shadow',
-    ]),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-      borderColor: theme.palette.primary.main,
-    },
-  },
-}));
-
 
 export const ChangePhone: React.FC = () => {
 
@@ -56,15 +26,16 @@ export const ChangePhone: React.FC = () => {
 
   const homeRoute = "/"
 
+  const dispatch = useDispatch()
+
+  const [phoneInput, setPhoneInput] = useMask(maskPhone)
+
   const onCancelButtonClick = () => {
     history.replace("/");
   };
 
-  const onNextButtonClick = () => {
-    const containerPopUp = document.getElementById("displayConfirmPopUp")
-
-    if (containerPopUp) containerPopUp.style.display = 'block'
-  }
+  const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setPhoneInput(event.target.value);
 
   const subtitle = 'Seu telefone atual é'
   const description = '(85) 00000.00000'
@@ -104,15 +75,19 @@ export const ChangePhone: React.FC = () => {
                 <CelphoneInput 
                   placeholder="Digite apenas números" 
                   id="bootstrap-input"
+                  value={phoneInput}
+                  onChange={onPhoneChange}
                   className="cover"/>
               </div>
             </main>
 
             <footer>        
-                <ProcessPageFooter nextButtonOnClick={onNextButtonClick}/>
+              <ProcessPageFooter nextButtonOnClick={() => dispatch({type: 'OPEN'})}/>
+              
             </footer>
 
-              <ConfirmPopUp />
+
+            <ConfirmPopUp />
           </div>
         </PageContainer>     
     </div>

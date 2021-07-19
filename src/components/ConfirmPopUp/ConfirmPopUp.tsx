@@ -1,9 +1,11 @@
 import React from 'react'
 import CloseIcon from '@material-ui/icons/Close';
 import {Button} from 'components/Button'
-import {Container, Typography, Box} from '@material-ui/core'
-import {useStyles} from './ConfirmPopUp.style'
+import OtpInput from 'react-otp-input';
+import { Container, Typography, Box, Slide } from '@material-ui/core'
+import { useStyles } from './ConfirmPopUp.style'
 import confirmSVG from '_assets/img/icn-confirmar.svg'
+import { useSelector, useDispatch } from 'react-redux';
 
 import './ConfirmPopUp.scss'
 
@@ -11,132 +13,60 @@ const ConfirmPopUp: React.FC = () => {
 
   const styles = useStyles()
 
-  let firstInputPassword : HTMLInputElement | null
-  let secondInputPassword: HTMLInputElement | null
-  let thirdInputPassword: HTMLInputElement | null
-  let fourthInputPassword: HTMLInputElement | null
+  const dispatch = useDispatch()
 
-  document.querySelector(".inputPassword")?.addEventListener("keypress", (evt: any) => {
-    if (evt.which !== 0 && evt.which < 48 || evt.which > 57)
-    {
-        evt.preventDefault();
-    }
-    // 0 for null values
-    // 48-57 for 0-9 numbers
-  });
+  const [inputValue, setInputValue] = React.useState("")
 
-  const setFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputID = e.target.id
-    const checkIfCanJumpToNextInput = e.currentTarget.value
-
-    if(checkIfCanJumpToNextInput){
-      switch (inputID) {
-        case 'first':
-            secondInputPassword?.focus()
-            break;
-        case 'second':
-            thirdInputPassword?.focus()
-            break;
-        case 'third':
-            fourthInputPassword?.focus()
-            break;      
-      }
-    }else{
-      switch (inputID) {
-        case 'second':
-            firstInputPassword?.focus()
-            break;
-        case 'third':
-            secondInputPassword?.focus()
-            break;
-        case 'fourth':
-            thirdInputPassword?.focus()
-            break;    
-    }
-  }
-  }
-
+  let statePopUp = useSelector(state => state) as any
+  
   const onCloseButtonClick = () => {
     const containerPopUp = document.getElementById("displayConfirmPopUp")
-
-    if (containerPopUp) containerPopUp.style.display = 'none'
   }
   
   return (
-    <Container className={styles.ConfirmPopUp} id="displayConfirmPopUp">
-      <Typography variant="h6" className={styles.titlePassword}>
-        Digite sua senha
-      </Typography>
-      <Typography variant="subtitle1" className={styles.subtitlePassword}>
-        Para autenticar a operação
-      </Typography>
-      <Box className={styles.passwordContainer}>
-        <input 
-          type="text" 
-          maxLength={1} 
-          onChange={e => setFocus(e)} 
-          required 
-          id="first"
-          className="inputPassword" 
-          ref={ (ref) => firstInputPassword = ref }
-          />
-        <input 
-          type="text" 
-          maxLength={1} 
-          onKeyDown={e => console.log(e.key)}
-          onChange={e => setFocus(e)} 
-          required 
-          id="second"
-          className="inputPassword" 
-          ref={ (ref) => secondInputPassword = ref }
-          />
-        <input 
-          type="text" 
-          maxLength={1} 
-          onKeyDown={e => console.log(e.key)}
-          onChange={e => setFocus(e)} 
-          required
-          id="third"
-          className="inputPassword" 
-          ref={ (ref) => thirdInputPassword = ref }
-          />
-          
-        <input 
-          type="text" 
-          maxLength={1} 
-          id="fourth"
-          onKeyDown={e => console.log(e.key)}
-          onChange={e => setFocus(e)} 
-          required 
-          className="inputPassword" 
-          ref={ (ref) => fourthInputPassword = ref }
+    <Slide direction="up" in={statePopUp} mountOnEnter unmountOnExit>
+      <Container className={styles.ConfirmPopUp}>
+        <Typography variant="h6" className={styles.titlePassword}>
+          Digite sua senha
+        </Typography>
+        <Typography variant="subtitle1" className={styles.subtitlePassword}>
+          Para autenticar a operação
+        </Typography>
+        
+        <Box className={styles.passwordContainer}>
+          <OtpInput
+            numInputs={4}
+            value={inputValue}
+            onChange={setInputValue}
+            isInputSecure
+            isInputNum
+            className="InputContainer"
           />
 
           <Box className="closeButtonContainer">
             <Button palette="secondary"
               size="medium"
               startIcon={<CloseIcon fontSize="large" color="primary" />}
-              onClick={onCloseButtonClick}
+              onClick={() => dispatch({type: 'CLOSE'})}
             >
               Fechar
             </Button>
-          </Box>
-
-         
-      </Box>
-
-      <div className="alignCenterButton">
-        <Box>
-          <Button palette="secondary"
-            size="medium"
-            startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
-            onClick={onCloseButtonClick}
-          >
-            Confirmar
-          </Button>
+            </Box>
         </Box>
-      </div>
-    </Container>
+        
+        <div className="alignCenterButton">
+          <Box>
+            <Button palette="secondary"
+              size="medium"
+              startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
+              onClick={onCloseButtonClick}
+            >
+              Confirmar
+            </Button>
+          </Box>
+        </div>
+      </Container>
+    </Slide>
   )
 }
 
