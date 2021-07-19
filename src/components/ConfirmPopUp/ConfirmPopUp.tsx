@@ -9,20 +9,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './ConfirmPopUp.scss'
 
-const ConfirmPopUp: React.FC = () => {
+interface ConfirmPopUpProps{
+  dataToConfirm: any;
+  resetState: (arg: string) => void;
+}
+
+const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }: any) => {
 
   const styles = useStyles()
 
   const dispatch = useDispatch()
 
   const [inputValue, setInputValue] = React.useState("")
+  
+  let statePopUp = useSelector((state: any) => state.animationState) as any
 
-  let statePopUp = useSelector(state => state) as any
-  
-  const onCloseButtonClick = () => {
-    const containerPopUp = document.getElementById("displayConfirmPopUp")
-  }
-  
   return (
     <Slide direction="up" in={statePopUp} mountOnEnter unmountOnExit>
       <Container className={styles.ConfirmPopUp}>
@@ -59,7 +60,11 @@ const ConfirmPopUp: React.FC = () => {
             <Button palette="secondary"
               size="medium"
               startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
-              onClick={onCloseButtonClick}
+              onClick={() => {
+                dispatch({type: "CHANGE_PHONE", param: dataToConfirm})
+                dispatch({type: "CLOSE"})
+                resetState('')
+              }}
             >
               Confirmar
             </Button>

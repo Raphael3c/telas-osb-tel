@@ -2,23 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from 'components/App';
 import { Provider } from 'react-redux'
-import {createStore} from 'redux'
-
-const myStore = createStore(reducer)
-
-function reducer(state: any = false, action: any){
-  switch (action.type){
-    case 'OPEN':
-      return true
-    case 'CLOSE':
-      return false
-    default:
-      return state
-  } 
-}
+import { store } from 'redux/RootReducer'
 
 ReactDOM.render(
-  <Provider store={myStore}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
