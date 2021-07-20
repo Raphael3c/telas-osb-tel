@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
     width: "100%",
     height: "212px",
     bottom: 0,
-    zIndex: 10,
+    zIndex: 2,
     background: "#323751",
     boxShadow: "0px -2px 2px rgba(0, 0, 0, 0.3)",
     borderRadius: "20px 20px 0px 0px",

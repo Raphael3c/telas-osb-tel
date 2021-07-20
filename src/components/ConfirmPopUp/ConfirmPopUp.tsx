@@ -48,7 +48,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
             <Button palette="secondary"
               size="medium"
               startIcon={<CloseIcon fontSize="large" color="primary" />}
-              onClick={() => dispatch({type: 'CLOSE'})}
+              onClick={() => dispatch({type: 'CLOSE_CONFIRM_POPUP'})}
             >
               Fechar
             </Button>
@@ -62,7 +62,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
               startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
               onClick={() => {
                 dispatch({type: "CHANGE_PHONE", param: dataToConfirm})
-                dispatch({type: "CLOSE"})
+                dispatch({type: "OPEN_CONFIRM_ALERT"})
                 resetState('')
               }}
             >

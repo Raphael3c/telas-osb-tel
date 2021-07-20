@@ -6,12 +6,12 @@ import { PageContainer } from 'components/PageContainer'
 import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
 import { ConfirmPopUp } from 'components/ConfirmPopUp'
 import { CelphoneInput } from 'components/CelphoneInput'
+import { ConfirmAlert } from 'components/ConfirmAlert'
 
 import { maskPhone } from '_utils/mask/maskPhone'
 
 import { useMask } from 'hooks/useMask'
 
-import { useHistory } from 'react-router-dom'
 import { Button } from 'components/Button'
 import { Close } from "@material-ui/icons";
 import InputLabel from '@material-ui/core/InputLabel'
@@ -22,8 +22,6 @@ import './ChangePhone.scss'
 
 export const ChangePhone: React.FC = () => {
 
-  const history = useHistory()
-
   const homeRoute = "/"
 
   const dispatch = useDispatch()
@@ -33,7 +31,7 @@ export const ChangePhone: React.FC = () => {
   const [phoneInput, setPhoneInput] = useMask(maskPhone)
 
   const onCancelButtonClick = () => {
-    history.replace("/");
+    window.location.reload();
   };
 
   const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -69,9 +67,7 @@ export const ChangePhone: React.FC = () => {
               </header>
 
               <main>
-                {/*Componentizar depois*/}
                 <div className="LabelInputContainer">
-                  
                   <InputLabel shrink htmlFor="bootstrap-input" className="marginLeft" >
                     Número de telefone
                   </InputLabel>
@@ -83,15 +79,16 @@ export const ChangePhone: React.FC = () => {
                     className="cover"
                     required/>
                 </div>
+                <ConfirmAlert />
               </main>
               
-              <section>
+              <footer>
                   <div className="footer">
-                      <ProcessPageFooter nextButtonOnClick={() => dispatch({type: 'OPEN'})}/>
+                      <ProcessPageFooter nextButtonOnClick={() => dispatch({type: 'OPEN_CONFIRM_POPUP'})}/>
                   </div>     
                     
                   <ConfirmPopUp dataToConfirm={phoneInput} resetState={setPhoneInput}/>
-              </section>
+              </footer>
             </div>
           </form>
         </PageContainer>     
