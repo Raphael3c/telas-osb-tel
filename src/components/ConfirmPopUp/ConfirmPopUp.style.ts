@@ -25,7 +25,9 @@ export const useStyles = makeStyles({
   },
 
   passwordContainer: {
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   inputPassword: {

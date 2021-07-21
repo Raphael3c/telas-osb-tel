@@ -7,6 +7,7 @@ interface ButtonProps extends ButtonStylesProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -18,6 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "contained",
   palette = "primary",
   children,
+  className,
 }) => {
   const styles = useStyles({ size, palette, variant });
 
@@ -29,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       startIcon={startIcon}
       endIcon={endIcon}
-      className={styles.button}
+      className={`${styles.button} ${className}`}
       onClick={onClick}
     >
       {children}

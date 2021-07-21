@@ -59,6 +59,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
           <Box>
             <Button palette="secondary"
               size="medium"
+              className='ContainerButtonConfirm'
               startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
               onClick={() => {
                 dispatch({type: "CHANGE_PHONE", param: dataToConfirm})
