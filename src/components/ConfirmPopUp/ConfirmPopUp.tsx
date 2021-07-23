@@ -21,7 +21,13 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
 
   const dispatch = useDispatch()
 
-  const [inputValue, setInputValue] = React.useState("")
+  let [inputValue, setInputValue] = React.useState("")
+
+  const handlePassword = (e: string) => {
+    const regExp = /[0-9]/g;
+    e = e.replaceAll(regExp, '*')
+    setInputValue(e)
+  }
   
   let statePopUp = useSelector((state: any) => state.animationState) as any
 
@@ -39,10 +45,9 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
           <OtpInput
             numInputs={4}
             value={inputValue}
-            onChange={setInputValue}
-            isInputSecure
-            isInputNum
+            onChange={(e: string) => handlePassword(e)}
             className="InputContainer"
+            isInputNum
           />
         </Box>
 
