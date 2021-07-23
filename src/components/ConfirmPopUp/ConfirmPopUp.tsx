@@ -21,7 +21,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
 
   const dispatch = useDispatch()
 
-  let [inputValue, setInputValue] = React.useState("")
+  const [inputValue, setInputValue] = React.useState("")
 
   const handlePassword = (e: string) => {
     const regExp = /[0-9]/g;
