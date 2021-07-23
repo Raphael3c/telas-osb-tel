@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
     justifyContent: "space-between",
 
     "& .MuiButton-root": {
-      minWidth: 136,
+      minWidth: 143,
       borderRadius: 10,
     },
 
@@ -30,8 +30,4 @@ export const useStyles = makeStyles({
       right: 0,
     },
   },
-
-  marginLeftButton:{
-    marginLeft: '16px',
-  }
 });

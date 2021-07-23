@@ -7,7 +7,6 @@ export const useStyles = makeStyles({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: 100,
     zIndex: 3,
     backgroundColor: "rgba(0, 0, 0, 0.3)",
   },

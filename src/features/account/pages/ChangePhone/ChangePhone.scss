@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.positionRelative{
+  position: relative;
+}
+
 .cover{
   width: 100%;
 }
@@ -15,11 +19,18 @@ main{
   justify-content: center;
   align-items: center;
   flex: 1;
-  margin-bottom: 200px;
+  position: relative;
 
   .LabelInputContainer{
     width: 93.5%;
-    margin-top: 53px;
+    position: absolute;
+    top: 21%;
+
+    label{
+      font-weight: 500;
+      color: #555555;
+      font-style: normal;
+    }
   }
 
   .marginLeft{

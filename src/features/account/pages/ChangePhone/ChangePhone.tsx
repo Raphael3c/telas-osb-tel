@@ -12,9 +12,11 @@ import { maskPhone } from '_utils/mask/maskPhone'
 
 import { useMask } from 'hooks/useMask'
 
+import shapeCancel  from '_assets/img/shapeCancel.svg'
+
 import { Button } from 'components/Button'
-import { Close } from "@material-ui/icons";
 import InputLabel from '@material-ui/core/InputLabel'
+import {useStyles} from './ChangePhone.style'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -25,6 +27,8 @@ export const ChangePhone: React.FC = () => {
   const homeRoute = "/"
 
   const dispatch = useDispatch()
+
+  const style = useStyles()
 
   const celphoneState = useSelector((state: any) => state.celphoneState) as any
 
@@ -37,12 +41,12 @@ export const ChangePhone: React.FC = () => {
   const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPhoneInput(event.target.value);
 
-  const subtitle = 'Seu telefone atual é'
+  const subtitle = 'Seu telefone atual é:'
 
   return (
     <div>
         <PageContainer> 
-          <form>
+          <div>
             <div className="minHeight">
               <header>
                 <AppBar
@@ -51,25 +55,26 @@ export const ChangePhone: React.FC = () => {
                       <Button
                         palette="secondary"
                         size="small"
-                        startIcon={<Close color="primary" />}
+                        className="buttonAppBar"
+                        startIcon={<img src={shapeCancel} alt="Cancelar" />}
                         onClick={onCancelButtonClick}
                       >
-                        Cancelar
+                        <span className={style.cancelSpan}>Cancelar</span>
                       </Button>
                     }
                   />
 
                   <ProcessDescriptionHeader 
-                    title="Editar Telefone"
+                    title="Editar telefone"
                     subtitle={subtitle}
-                    description={celphoneState ? celphoneState : '(85) 0 0000-00000' }
+                    description={celphoneState ? celphoneState : '(85) 00000.00000' }
                     />
               </header>
 
               <main>
                 <div className="LabelInputContainer">
                   <InputLabel shrink htmlFor="bootstrap-input" className="marginLeft" >
-                    Número de telefone
+                    <span className={style.labelInputCellphone}> Número de telefone </span>
                   </InputLabel>
                   <CelphoneInput 
                     placeholder="Digite apenas números" 
@@ -79,18 +84,19 @@ export const ChangePhone: React.FC = () => {
                     className="cover"
                     required/>
                 </div>
-                <ConfirmAlert />
               </main>
               
               <footer>
                   <div className="footer">
                       <ProcessPageFooter nextButtonOnClick={() => dispatch({type: 'OPEN_CONFIRM_POPUP'})}/>
-                  </div>     
-                    
-                  <ConfirmPopUp dataToConfirm={phoneInput} resetState={setPhoneInput}/>
+                  </div>                         
               </footer>
+
+              <ConfirmPopUp dataToConfirm={phoneInput} resetState={setPhoneInput}/>
+
+              <ConfirmAlert />
             </div>
-          </form>
+          </div>
         </PageContainer>     
     </div>
   )

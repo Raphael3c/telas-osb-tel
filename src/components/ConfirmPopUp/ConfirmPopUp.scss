@@ -10,9 +10,9 @@
   top: -12px;
 }
 
-.iconeConfirm{
+.iconConfirm{
   position: relative;
-  left: -23px;
+  left: -20px;
 }
 
 .alignCenterButton{
@@ -23,16 +23,24 @@
   margin-top: 20px;
 }
 
+.InputContainer:nth-child(1),
+.InputContainer:nth-child(2),
+.InputContainer:nth-child(3){
+  margin-right: 30px;
+}
+
 .InputContainer input {
   font-size: 40px;
   background-color: #656982;
   box-sizing: border-box;
-  margin-right: 30px;
   border: none;
   border-radius: 3px;
   color: #EFEFEF;
+  width: 50px;
+  height: 50px;
 }
 
 .ContainerButtonConfirm{
   margin-right: 0;
+  position: relative;
 }

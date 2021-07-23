@@ -20,7 +20,7 @@ export const confirmAlertAnimation = (state: any = false, action: any) => {
   } 
 }
 
-export const celphoneState = (state: any = "(85) 0 0000-00000", action: any) => {
+export const celphoneState = (state: any = "(85) 00000.00000", action: any) => {
   const param = action.param;
   switch (action.type){
     case 'CHANGE_PHONE':

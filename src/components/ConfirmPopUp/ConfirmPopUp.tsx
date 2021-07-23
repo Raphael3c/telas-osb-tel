@@ -1,11 +1,12 @@
 import React from 'react'
-import CloseIcon from '@material-ui/icons/Close';
 import {Button} from 'components/Button'
 import OtpInput from 'react-otp-input';
 import { Container, Typography, Box, Slide } from '@material-ui/core'
 import { useStyles } from './ConfirmPopUp.style'
 import confirmSVG from '_assets/img/icn-confirmar.svg'
 import { useSelector, useDispatch } from 'react-redux';
+import shapeCancel  from '_assets/img/shapeCancel.svg'
+
 
 import './ConfirmPopUp.scss'
 
@@ -30,7 +31,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
         <Typography variant="h6" className={styles.titlePassword}>
           Digite sua senha
         </Typography>
-        <Typography variant="subtitle1" className={styles.subtitlePassword}>
+        <Typography variant="subtitle2" className={styles.subtitlePassword}>
           Para autenticar a operação
         </Typography>
         
@@ -43,31 +44,32 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
             isInputNum
             className="InputContainer"
           />
+        </Box>
 
-          <Box className="closeButtonContainer">
+        <Box className="closeButtonContainer">
             <Button palette="secondary"
-              size="medium"
-              startIcon={<CloseIcon fontSize="large" color="primary" />}
+              size="small"
+              className={styles.buttonPadding}
+              startIcon={<img src={shapeCancel} alt="Cancelar" />}
               onClick={() => dispatch({type: 'CLOSE_CONFIRM_POPUP'})}
             >
               Fechar
             </Button>
-            </Box>
         </Box>
         
         <div className="alignCenterButton">
           <Box>
             <Button palette="secondary"
-              size="medium"
+              size="small"
               className='ContainerButtonConfirm'
-              startIcon={<img src={confirmSVG} height={23} width={23} className="iconeConfirm" alt="Icone de Confirmação"/>}
+              startIcon={<img src={confirmSVG} height={23} width={23} className="iconConfirm" alt="Icone de Confirmação"/>}
               onClick={() => {
                 dispatch({type: "CHANGE_PHONE", param: dataToConfirm})
                 dispatch({type: "OPEN_CONFIRM_ALERT"})
                 resetState('')
               }}
             >
-              Confirmar
+              <span className={styles.confirmLabel}> Confirmar </span>
             </Button>
           </Box>
         </div>

@@ -10,29 +10,42 @@ export const useStyles = makeStyles({
     background: "#323751",
     boxShadow: "0px -2px 2px rgba(0, 0, 0, 0.3)",
     borderRadius: "20px 20px 0px 0px",
+    padding: 0,
   },
 
   titlePassword: {
     color: '#EFEFEF',
     marginTop: "12px",
-    fontWeight: "bold"
+    fontWeight: 700,
+    marginLeft: '16px',
   },
 
   subtitlePassword: {
-    color: '#EFEFEF',
+    color: 'rgba(239, 239, 239, 0.7)',
     marginTop: "12px",
     fontWeight: 300,
+    marginLeft: '16px',
+    marginBottom: '11px',
   },
 
   passwordContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    '& > div': {
+      justifyContent: 'space-evenly',
+    }
   },
 
   inputPassword: {
-    width: "45px",
-    height: "55px",
     marginRight: "30px"
+  }, 
+
+  confirmLabel: {
+    position: 'relative',
+    right: '12px',
+  },
+
+  buttonPadding: {
   }
+
 });

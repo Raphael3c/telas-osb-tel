@@ -7,6 +7,8 @@ export const useStyles = makeStyles({
     fontSize: 20,
     color: textColors.primary,
     marginLeft: 16,
+    lineHeight: '23,44px',
+    marginBottom: '28px',
   },
   subtitle: {
     fontWeight: 500,
@@ -22,11 +24,10 @@ export const useStyles = makeStyles({
     fontSize: 14,
     lineHeight: "16px",
     marginLeft: 16,
-    marginTop: 8,
     paddingBottom: 29
   },
   containerDescriptionHeader:{
     backgroundColor: '#F9F9F9',
-    paddingTop: 24,
+    paddingTop: 21,
   }
 });
