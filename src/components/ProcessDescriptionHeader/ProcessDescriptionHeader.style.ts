@@ -24,10 +24,10 @@ export const useStyles = makeStyles({
     fontSize: 14,
     lineHeight: "16px",
     marginLeft: 16,
-    paddingBottom: 29
+    paddingBottom: 25
   },
   containerDescriptionHeader:{
     backgroundColor: '#F9F9F9',
-    paddingTop: 21,
+    paddingTop: 16,
   }
 });

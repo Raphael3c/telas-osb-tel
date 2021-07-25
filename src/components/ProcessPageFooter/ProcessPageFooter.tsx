@@ -1,14 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Box } from "@material-ui/core";
-import { KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
+import arrowLeft from '_assets/img/arrowLeft.svg'
+import arrowRight from '_assets/img/arrowRight.svg'
 import { Button } from "components/Button";
 import { useStyles } from "./ProcessPageFooter.style";
+
+import './ProcessPageFooter.scss'
 
 interface ProcessPageFooterProps {
   nextButtonOnClick: any
 }
-
 
 export const ProcessPageFooter: React.FC<ProcessPageFooterProps> = ({
   nextButtonOnClick
@@ -22,17 +24,17 @@ export const ProcessPageFooter: React.FC<ProcessPageFooterProps> = ({
     <Box className={styles.buttonsWrapper}>
       <Button
         palette="secondary"
-        startIcon={<KeyboardArrowLeft color="secondary" />}
+        startIcon={<img src={arrowLeft} width="8" height="14" className="marginArrowLeft" alt="Anterior"/>}
         onClick={onPreviousButtonClick}
       >
-        Voltar
+        <span className="letterSpacing"> Voltar </span> 
       </Button>
       <Button
         palette="primary"
-        endIcon={<KeyboardArrowRight color="secondary" />}
+        endIcon={<img src={arrowRight} width="8" height="14" className="marginArrowRight" alt="Próximo"/>}
         onClick={nextButtonOnClick}
       >
-        Próximo
+        <span className="buttonNext"> Próximo </span> 
       </Button>
     </Box>
   );

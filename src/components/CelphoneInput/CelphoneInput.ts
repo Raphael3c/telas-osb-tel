@@ -7,7 +7,7 @@ export const CelphoneInput = styled(InputBase)(({ theme }) => ({
     position: 'relative',
     backgroundColor: '#ffff',
     border: '1px solid #C4C4C4',
-    fontSize: 16,
+    fontSize: 15.16,
     width: '100%',
     padding: '10px 12px',
     transition: theme.transitions.create([

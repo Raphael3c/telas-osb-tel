@@ -56,7 +56,7 @@ export const ChangePhone: React.FC = () => {
                         palette="secondary"
                         size="small"
                         className="buttonAppBar"
-                        startIcon={<img src={shapeCancel} alt="Cancelar" />}
+                        startIcon={<img src={shapeCancel} width={14} height={14} alt="Cancelar" />}
                         onClick={onCancelButtonClick}
                       >
                         <span className={style.cancelSpan}>Cancelar</span>
@@ -74,7 +74,7 @@ export const ChangePhone: React.FC = () => {
               <main>
                 <div className="LabelInputContainer">
                   <InputLabel shrink htmlFor="bootstrap-input" className="marginLeft" >
-                    <span className={style.labelInputCellphone}> Número de telefone </span>
+                    <span> Número de telefone </span>
                   </InputLabel>
                   <CelphoneInput 
                     placeholder="Digite apenas números" 

@@ -58,7 +58,7 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
               startIcon={<img src={shapeCancel} alt="Cancelar" />}
               onClick={() => dispatch({type: 'CLOSE_CONFIRM_POPUP'})}
             >
-              Fechar
+              <span className="closeLabelConfirmPopUp"> Fechar </span> 
             </Button>
         </Box>
         
@@ -66,13 +66,14 @@ const ConfirmPopUp: React.FC<ConfirmPopUpProps> = ({ dataToConfirm, resetState }
           <Box>
             <Button palette="secondary"
               size="small"
-              className='ContainerButtonConfirm'
-              startIcon={<img src={confirmSVG} height={23} width={23} className="iconConfirm" alt="Icone de Confirmação"/>}
+              startIcon={<img src={confirmSVG} height={18} width={18} className="iconConfirm" alt="Icone de Confirmação"/>}
               onClick={() => {
                 dispatch({type: "CHANGE_PHONE", param: dataToConfirm})
                 dispatch({type: "OPEN_CONFIRM_ALERT"})
                 resetState('')
               }}
+              className='ContainerButtonConfirm'
+              id="buttonConfirm"
             >
               <span className={styles.confirmLabel}> Confirmar </span>
             </Button>

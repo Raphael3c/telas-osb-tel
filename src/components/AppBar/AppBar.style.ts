@@ -9,6 +9,7 @@ export const useStyles = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
     height: toolbarHeight,
+    minHeight: '48px',
 
     /* [theme.breakpoints.down("sm")]: {
       height: toolbarHeight,

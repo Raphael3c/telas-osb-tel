@@ -8,6 +8,7 @@ interface ButtonProps extends ButtonStylesProps {
   endIcon?: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  id?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   palette = "primary",
   children,
   className,
+  id,
 }) => {
   const styles = useStyles({ size, palette, variant });
 
@@ -33,6 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
       endIcon={endIcon}
       className={`${styles.button} ${className}`}
       onClick={onClick}
+      id={id}
     >
       {children}
     </MuiButton>

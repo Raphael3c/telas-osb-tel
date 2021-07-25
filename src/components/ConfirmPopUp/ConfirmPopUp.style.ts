@@ -18,6 +18,7 @@ export const useStyles = makeStyles({
     marginTop: "12px",
     fontWeight: 700,
     marginLeft: '16px',
+    fontSize: '16px',
   },
 
   subtitlePassword: {
@@ -46,6 +47,8 @@ export const useStyles = makeStyles({
   },
 
   buttonPadding: {
+    width: '79.85px',
+    height: '25.63px',
   }
 
 });

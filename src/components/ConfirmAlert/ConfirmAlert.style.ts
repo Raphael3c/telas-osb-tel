@@ -13,5 +13,8 @@ export const useStyles = makeStyles({
 
   imgConfirmAlert:{
     width: '90%',
+    height: '284px',
+    position: 'relative',
+    margin: 'auto',
   }
 });

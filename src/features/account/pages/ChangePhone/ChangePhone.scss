@@ -5,6 +5,11 @@
   position: relative;
 }
 
+.buttonAppBar{
+  width: 79.85px;
+  height: 25.63px;
+}
+
 .positionRelative{
   position: relative;
 }
@@ -22,7 +27,7 @@ main{
   position: relative;
 
   .LabelInputContainer{
-    width: 93.5%;
+    width: 88.75%;
     position: absolute;
     top: 21%;
 
@@ -30,6 +35,9 @@ main{
       font-weight: 500;
       color: #555555;
       font-style: normal;
+      font-size: 12px;
+      transform: scale(0.9883, 1.143);
+      margin-bottom: 4px;
     }
   }
 
@@ -39,7 +47,7 @@ main{
 }
 
 .footer{
-  margin: 0 8px 24px 8px;
+  margin: 0 16px 24px 16px;
 }
 
 input::placeholder {
