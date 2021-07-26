@@ -27,7 +27,7 @@ export const ProcessPageFooter: React.FC<ProcessPageFooterProps> = ({
         startIcon={<img src={arrowLeft} width="8" height="14" className="marginArrowLeft" alt="Anterior"/>}
         onClick={onPreviousButtonClick}
       >
-        <span className="letterSpacing"> Voltar </span> 
+        <span className="letterSpacing buttonback"> Voltar </span> 
       </Button>
       <Button
         palette="primary"
