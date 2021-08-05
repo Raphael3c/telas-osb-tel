@@ -5,8 +5,9 @@ import { ProcessPageFooter } from 'components/ProcessPageFooter'
 import { PageContainer } from 'components/PageContainer'
 import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
 import { ConfirmPopUp } from 'components/ConfirmPopUp'
-import { CelphoneInput } from 'components/CelphoneInput'
 import { ConfirmAlert } from 'components/ConfirmAlert'
+
+import { Input } from 'components/Input'
 
 import { maskPhone } from '_utils/mask/maskPhone'
 
@@ -15,7 +16,6 @@ import { useMask } from 'hooks/useMask'
 import shapeCancel  from '_assets/img/shapeCancel.svg'
 
 import { Button } from 'components/Button'
-import InputLabel from '@material-ui/core/InputLabel'
 import {useStyles} from './ChangePhone.style'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -37,9 +37,6 @@ export const ChangePhone: React.FC = () => {
   const onCancelButtonClick = () => {
     window.location.reload();
   };
-
-  const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPhoneInput(event.target.value);
 
   const subtitle = 'Seu telefone atual é:'
 
@@ -73,16 +70,7 @@ export const ChangePhone: React.FC = () => {
 
               <main>
                 <div className="LabelInputContainer">
-                  <InputLabel shrink htmlFor="bootstrap-input" className="marginLeft" >
-                    <span> Número de telefone </span>
-                  </InputLabel>
-                  <CelphoneInput 
-                    placeholder="Digite apenas números" 
-                    id="bootstrap-input"
-                    value={phoneInput}
-                    onChange={onPhoneChange}
-                    className="cover"
-                    required/>
+                  <Input setInputValue={setPhoneInput} inputValue={phoneInput} title={"Número de telefone"}/>
                 </div>
               </main>
               
